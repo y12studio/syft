@@ -176,6 +176,15 @@ var defaultClassifiers = []classifier{
 		PURL:    mustPURL("pkg:generic/traefik@version"),
 	},
 	{
+		Class:    "deno",
+		FileGlob: "**/deno",
+		EvidenceMatcher: fileContentsVersionMatcher(
+			`(?m)release/v(?P<version>[0-9]+\.[0-9]+\.[0-9]+)windowshttps`),
+		Package: "deno",
+		PURL:    mustPURL("pkg:generic/deno@version"),
+		CPEs:    singleCPE("cpe:2.3:a:deno:deno:*:*:*:*:*:*:*:*"),
+	},
+	{
 		Class:    "postgresql-binary",
 		FileGlob: "**/postgres",
 		EvidenceMatcher: fileContentsVersionMatcher(
